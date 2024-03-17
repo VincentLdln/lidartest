@@ -9,9 +9,8 @@ WHITE = (255, 255, 255)
 
 def update(laser, screen):
     timestamp, scan = laser.get_filtered_dist(dmax=DMAX)
-    polar_points = np.array(scan).T
     cartesian_points = []
-    for r, theta in polar_points:
+    for r, theta in scan:
         x = int(r * np.cos(theta))
         y = int(r * np.sin(theta))
         cartesian_points.append((x, y))
